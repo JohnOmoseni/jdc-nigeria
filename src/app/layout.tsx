@@ -1,9 +1,10 @@
 import type { Metadata } from "next";
 import { Inter, Outfit } from "next/font/google";
+import Providers from "@/components/Providers";
 import "./globals.css";
 
 const inter = Inter({ subsets: ["latin"], variable: "--font-sans" });
-const outfit = Outfit({ subsets: ["latin"], variable: "--font-serif" }); // Using outfit as display font
+const outfit = Outfit({ subsets: ["latin"], variable: "--font-serif" });
 
 export const metadata: Metadata = {
 	title: "JDC Nigeria Data Centres | 55 MW Digital Infrastructure Platform",
@@ -18,8 +19,10 @@ export default function RootLayout({
 }>) {
 	return (
 		<html lang="en" className="scroll-smooth">
-			<body className={`${inter.variable} ${outfit.variable} antialiased bg-white`}>
-				{children}
+			<body
+				className={`${inter.variable} ${outfit.variable} antialiased bg-white`}
+			>
+				<Providers>{children}</Providers>
 			</body>
 		</html>
 	);

@@ -7,29 +7,13 @@ import { motion, AnimatePresence } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
-import { Input } from "@/components/ui/input";
-import { Textarea } from "@/components/ui/textarea";
-import {
-	Select,
-	SelectContent,
-	SelectItem,
-	SelectTrigger,
-	SelectValue,
-} from "@/components/ui/select";
 import {
 	Menu,
 	X,
 	ArrowRight,
 	CheckCircle2,
-	Factory,
-	Shield,
-	Cpu,
-	Cloud,
-	Link as LinkIcon,
 	Zap,
-	Server,
 	Network,
-	Handshake,
 	MapPin,
 } from "lucide-react";
 
@@ -45,10 +29,11 @@ import {
 	LOCATION_DATA,
 	SUSTAINABILITY_DATA,
 	OPENING_2029_DATA,
-	CONTACT_DATA,
-	FOOTER_DATA,
 	IMAGES,
 } from "@/constants";
+import { cn } from "@/lib/utils";
+import ContactSection from "./_sections/contact";
+import Footer from "./_sections/footer";
 
 export default function LandingPage() {
 	const [isScrolled, setIsScrolled] = useState(false);
@@ -64,20 +49,34 @@ export default function LandingPage() {
 		<main className="flex-1 w-full bg-background text-foreground font-sans">
 			{/* 1. Navigation */}
 			<header
-				className={`fixed top-0 left-0 w-full z-50 transition-all duration-300 ${isScrolled ? "bg-brand-navy shadow-lg py-4 border-b border-white/5" : "bg-transparent py-6"}`}
+				className={cn(
+					"fixed top-0 left-0 w-full z-50 transition-all duration-300",
+					isScrolled
+						? "bg-brand-navy/90 grayscale backdrop-blur-lg shadow-lg py-4"
+						: "glass-nav py-4",
+				)}
 			>
 				<div className="container mx-auto px-6 lg:px-12 max-w-[1400px] flex items-center justify-between">
-					<Link href="/" className="relative z-10 flex items-center gap-3">
+					<Link
+						href="/"
+						className="relative w-[180px] h-0 -ml-3 z-10 flex items-center gap-3"
+					>
 						<Image
-							src={IMAGES.placeholderLogo}
+							src={IMAGES.headerLogo}
 							alt="JDC Nigeria Logo"
-							width={40}
-							height={40}
-							className="w-10 h-10 object-contain"
+							width={180}
+							height={100}
+							className="h-[100px]! hidden sm:block"
+							priority
 						/>
-						<span className="text-white font-serif font-semibold text-lg tracking-wide hidden sm:block">
-							JDC Nigeria
-						</span>
+						<Image
+							src={IMAGES.logo}
+							alt="JDC Nigeria Logo"
+							width={60}
+							height={60}
+							className="block sm:hidden"
+							priority
+						/>
 					</Link>
 
 					{/* Desktop Nav */}
@@ -93,18 +92,19 @@ export default function LandingPage() {
 						))}
 						<Button
 							className="bg-brand-cyan text-brand-navy hover:bg-brand-cyan/90 font-semibold"
-							// asChild
+							render={<Link href={"#contact"} />}
 						>
-							<Link href="#contact">Discuss a Partnership</Link>
+							Discuss a Partnership
 						</Button>
 					</nav>
 
 					{/* Mobile Toggle */}
 					<button
+						type="button"
 						className="lg:hidden text-white relative z-10"
 						onClick={() => setIsOpen(!isOpen)}
 					>
-						{isOpen ? <X size={28} /> : <Menu size={28} />}
+						{isOpen ? <X size={20} /> : <Menu size={20} />}
 					</button>
 				</div>
 
@@ -143,7 +143,7 @@ export default function LandingPage() {
 			</header>
 
 			{/* 1. Hero */}
-			<section className="relative min-h-[90vh] flex items-center pt-32 overflow-hidden bg-brand-navy">
+			<section className="relative min-h-svh flex flex-col items-center pt-32 overflow-hidden bg-brand-navy">
 				<div className="absolute inset-0 z-0">
 					<Image
 						src={IMAGES.hero}
@@ -152,18 +152,15 @@ export default function LandingPage() {
 						className="object-cover opacity-40 mix-blend-overlay"
 						priority
 					/>
-					<div className="absolute inset-0 bg-gradient-to-r from-brand-navy via-brand-navy/90 to-brand-navy/30"></div>
-					<div className="absolute inset-0 bg-gradient-to-t from-brand-navy via-transparent to-transparent"></div>
+					<div className="absolute inset-0 bg-linear-to-r from-brand-navy via-brand-navy/40 to-brand-navy/30"></div>
+					<div className="absolute inset-0 bg-linear-to-t from-brand-navy via-transparent to-transparent"></div>
 				</div>
 
-				<div className="container relative z-10 mx-auto px-6 lg:px-12 max-w-[1400px] flex flex-col justify-center h-full pb-20">
+				<div className="container self-center flex-1 relative z-10 mx-auto px-8 lg:px-12 max-w-[1400px] flex flex-col justify-center h-full pb- md:pb-20">
 					<div className="max-w-3xl">
-						<Badge className="bg-brand-cyan/10 text-brand-cyan border-brand-cyan/20 hover:bg-brand-cyan/20 px-4 py-1.5 mb-8 text-xs font-bold tracking-widest uppercase rounded-full">
-							{HERO_DATA.eyebrow}
-						</Badge>
 						<h1 className="text-5xl sm:text-6xl lg:text-[72px] leading-[1.05] font-serif text-white mb-8 font-medium tracking-tight">
 							{HERO_DATA.headlineStart}
-							<span className="text-transparent bg-clip-text bg-gradient-to-r from-brand-cyan to-brand-teal">
+							<span className="text-transparent bg-clip-text bg-linear-to-r from-brand-cyan to-brand-teal">
 								{HERO_DATA.headlineHighlight}
 							</span>
 						</h1>
@@ -171,34 +168,34 @@ export default function LandingPage() {
 							{HERO_DATA.supportingCopy}
 						</p>
 						<div className="flex flex-col sm:flex-row gap-4 mb-16">
-							{/* <Button size="lg" className="bg-brand-cyan text-brand-navy hover:bg-brand-teal transition-colors font-semibold text-base px-8 h-14 rounded-full" asChild> */}
 							<Button
 								size="lg"
-								className="bg-brand-cyan text-brand-navy hover:bg-brand-teal transition-colors font-semibold text-base px-8 h-14 rounded-full"
+								className=""
+								render={<Link href={"#contact"} />}
 							>
-								<Link href="#contact">Discuss a Partnership</Link>
+								Discuss a Partnership
 							</Button>
 							{/* <Button size="lg" variant="outline" className="border-white/20 text-white hover:bg-white/5 font-semibold text-base px-8 h-14 rounded-full" asChild> */}
-							<Button
-								size="lg"
-								variant="outline"
-								className="border-white/20 text-white hover:bg-white/5 font-semibold text-base px-8 h-14 rounded-full"
-							>
+							<Button size="lg" variant="white" className="">
 								<Link href="#services">Enquire About Capacity</Link>
 							</Button>
 						</div>
-						<p className="text-brand-amber font-serif text-lg italic opacity-90">
+						{/* <p className="text-brand-amber font-serif text-lg italic opacity-90">
 							{HERO_DATA.closingLine}
-						</p>
+						</p> */}
 					</div>
 				</div>
 
 				{/* Hero Stats */}
-				<div className="absolute bottom-0 left-0 w-full bg-brand-navy-light/95 border-t border-white/10 backdrop-blur-md">
+				<div className="md:absolute bottom-0 left-0 w-full bg-brand-navy-light/95 border-t border-white/10 backdrop-blur-md">
 					<div className="container mx-auto px-6 lg:px-12 max-w-[1400px]">
 						<div className="grid grid-cols-2 md:grid-cols-4 divide-x divide-white/5">
 							{HERO_DATA.stats.map((stat, i) => (
-								<div key={i} className="py-6 px-4 md:px-6 flex flex-col">
+								<div
+									// biome-ignore lint/suspicious/noArrayIndexKey: arrayIndexKey
+									key={i}
+									className="py-6 px-4 md:px-6 flex flex-col max-md:last:border-r border-white/5"
+								>
 									<span className="font-serif text-2xl md:text-3xl text-brand-cyan mb-1 font-medium">
 										{stat.value}
 									</span>
@@ -226,6 +223,7 @@ export default function LandingPage() {
 						<div className="hidden md:block absolute top-1/2 left-0 w-full h-0.5 bg-slate-100 -translate-y-1/2 z-0"></div>
 						{POWER_TO_PACKET_DATA.sequence.map((item, idx) => (
 							<div
+								// biome-ignore lint/suspicious/noArrayIndexKey: arrayIndexKey
 								key={idx}
 								className="relative z-10 flex flex-col items-center gap-4 group mb-8 md:mb-0 bg-white px-2"
 							>
@@ -246,10 +244,10 @@ export default function LandingPage() {
 				id="partnerships"
 				className="py-28 bg-brand-navy text-white relative overflow-hidden"
 			>
-				<div className="absolute inset-0 opacity-5 bg-[radial-gradient(circle_at_center,_var(--tw-gradient-stops))] from-brand-cyan via-brand-navy to-brand-navy"></div>
+				<div className="absolute inset-0 opacity-5 bg-[radial-gradient(circle_at_center,var(--tw-gradient-stops))] from-brand-cyan via-brand-navy to-brand-navy"></div>
 				<div className="container relative z-10 mx-auto px-6 lg:px-12 max-w-[1400px]">
 					<div className="max-w-3xl mb-16">
-						<Badge className="bg-brand-amber/10 text-brand-amber border-none mb-6 px-4 py-1">
+						<Badge className="bg-brand-amber/10 text-brand-amber border-none mb-6 px-4 py-4">
 							Partnerships
 						</Badge>
 						<h2 className="text-4xl md:text-5xl font-serif mb-6">
@@ -268,6 +266,7 @@ export default function LandingPage() {
 					<div className="grid md:grid-cols-2 gap-6 mb-16">
 						{PARTNERSHIPS_DATA.cards.map((card, idx) => (
 							<Card
+								// biome-ignore lint/suspicious/noArrayIndexKey: arrayIndexKey
 								key={idx}
 								className="bg-brand-navy-light border-white/5 p-8 hover:border-brand-cyan/30 transition-colors"
 							>
@@ -283,25 +282,26 @@ export default function LandingPage() {
 					</div>
 
 					<div className="flex flex-col md:flex-row items-center justify-between border-t border-white/10 pt-10">
-						<div className="flex flex-wrap gap-4 mb-8 md:mb-0">
+						<div className="grid grid-cols-[auto_1fr] gap-3 mb-8 md:mb-0">
 							<span className="text-white/50 text-sm uppercase tracking-widest mr-2">
 								What we value:
 							</span>
-							{PARTNERSHIPS_DATA.values.map((val) => (
-								<span key={val} className="text-white/80 text-sm font-medium">
-									{val}
-								</span>
-							))}
+							<div className="flex flex-wrap flex-1 gap-x-4 gap-y-3">
+								{PARTNERSHIPS_DATA.values.map((val) => (
+									<span key={val} className="text-white/80 text-sm font-medium">
+										{val}
+									</span>
+								))}
+							</div>
 						</div>
-						{/* <Button size="lg" className="bg-brand-cyan text-brand-navy hover:bg-brand-teal w-full md:w-auto px-8 rounded-full" asChild> */}
+
 						<Button
 							size="lg"
-							className="bg-brand-cyan text-brand-navy hover:bg-brand-teal w-full md:w-auto px-8 rounded-full"
+							className="w-full md:w-auto h-12"
+							render={<Link href="#contact" />}
 						>
-							<Link href="#contact">
-								Bring the capability that completes the platform{" "}
-								<ArrowRight className="ml-2 w-4 h-4" />
-							</Link>
+							Bring the capability that completes the platform{" "}
+							<ArrowRight className="ml-2 w-4 h-4" />
 						</Button>
 					</div>
 				</div>
@@ -313,7 +313,7 @@ export default function LandingPage() {
 					<div className="grid lg:grid-cols-2 gap-16 items-center">
 						<div className="relative aspect-square md:aspect-video lg:aspect-square rounded-3xl overflow-hidden shadow-xl">
 							<Image
-								src={IMAGES.campus}
+								src={IMAGES.network}
 								alt="Campus Design"
 								fill
 								className="object-cover"
@@ -325,12 +325,14 @@ export default function LandingPage() {
 							</h2>
 							<div className="space-y-6 text-lg text-slate-600 mb-10 leading-relaxed">
 								{CAMPUS_DATA.description.map((p, i) => (
+									// biome-ignore lint/suspicious/noArrayIndexKey: arrayIndexKey
 									<p key={i}>{p}</p>
 								))}
 							</div>
 							<ul className="space-y-4">
 								{CAMPUS_DATA.bullets.map((bullet, i) => (
 									<li
+										// biome-ignore lint/suspicious/noArrayIndexKey: arrayIndexKey
 										key={i}
 										className="flex items-start gap-4 text-slate-700 font-medium"
 									>
@@ -343,6 +345,44 @@ export default function LandingPage() {
 					</div>
 				</div>
 			</section>
+
+			{/* <section id="campus" className="bg-slate-50 pt-24">
+				<div className="container mx-auto px-6 lg:px-12 max-w-[1400px]">
+					<div className="max-w-4xl mx-auto text-center mb-16">
+						<h2 className="text-4xl lg:text-5xl font-serif text-brand-navy mb-8">
+							{CAMPUS_DATA.heading}
+						</h2>
+						<div className="space-y-6 text-lg text-slate-600 mb-12 leading-relaxed">
+							{CAMPUS_DATA.description.map((p, i) => (
+								// biome-ignore lint/suspicious/noArrayIndexKey: arrayIndexKey
+								<p key={i}>{p}</p>
+							))}
+						</div>
+						<ul className="grid sm:grid-cols-2 gap-4 text-left max-w-3xl mx-auto">
+							{CAMPUS_DATA.bullets.map((bullet, i) => (
+								<li
+									// biome-ignore lint/suspicious/noArrayIndexKey: arrayIndexKey
+									key={i}
+									className="flex items-start gap-4 text-slate-700 font-medium bg-white p-4 rounded-xl shadow-sm border border-slate-100"
+								>
+									<CheckCircle2 className="w-6 h-6 text-brand-teal shrink-0" />
+									<span>{bullet}</span>
+								</li>
+							))}
+						</ul>
+					</div>
+				</div>
+
+				<div className="relative w-full h-[50vh] md:h-[80vh] min-h-[500px]">
+					<Image
+						src={IMAGES.campus}
+						alt="JDC Nigeria Campus Design"
+						fill
+						className="object-cover"
+						priority
+					/>
+				</div>
+			</section> */}
 
 			{/* 5. Power & Resilience */}
 			<section id="infrastructure" className="py-24 bg-brand-navy text-white">
@@ -360,6 +400,7 @@ export default function LandingPage() {
 					<div className="grid grid-cols-2 md:grid-cols-4 gap-8 mb-16">
 						{POWER_RESILIENCE_DATA.stats.map((stat, i) => (
 							<div
+								// biome-ignore lint/suspicious/noArrayIndexKey: arrayIndexKey
 								key={i}
 								className="p-6 border border-white/10 rounded-2xl bg-brand-navy-light/50 backdrop-blur-sm"
 							>
@@ -391,6 +432,7 @@ export default function LandingPage() {
 							</p>
 							<div className="grid sm:grid-cols-2 gap-6">
 								{CONNECTIVITY_DATA.bullets.map((bullet, i) => (
+									// biome-ignore lint/suspicious/noArrayIndexKey: arrayIndexKey
 									<div key={i} className="flex items-start gap-3">
 										<div className="w-1.5 h-1.5 bg-brand-cyan rounded-full mt-2 shrink-0"></div>
 										<span className="text-slate-700 font-medium">{bullet}</span>
@@ -398,11 +440,19 @@ export default function LandingPage() {
 								))}
 							</div>
 						</div>
-						<div className="order-1 lg:order-2 bg-slate-50 p-12 rounded-3xl border border-slate-100 flex items-center justify-center min-h-[400px]">
-							<Network
+						<div className="order-1 lg:order-2 bg-slate-50 p-12 rounded-3xl border border-slate-100 relative h-[400px]">
+							{/* <Network
 								className="w-32 h-32 text-brand-navy/10"
 								strokeWidth={0.5}
+							/> */}
+							{/* <div className="relative aspect-square md:aspect-video lg:aspect-square rounded-3xl overflow-hidden shadow-xl"> */}
+							<Image
+								src={IMAGES.campus}
+								alt="Campus Design"
+								fill
+								className="absolute inset-0 rounded-3xl"
 							/>
+							{/* </div> */}
 						</div>
 					</div>
 				</div>
@@ -423,8 +473,9 @@ export default function LandingPage() {
 					<div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
 						{SERVICES_DATA.cards.map((card, i) => (
 							<Card
+								// biome-ignore lint/suspicious/noArrayIndexKey: arrayIndexKey
 								key={i}
-								className="overflow-hidden border-none shadow-sm hover:shadow-xl transition-shadow duration-300 group"
+								className="overflow-hidden p-0 border-none shadow-sm hover:shadow-xl transition-shadow duration-300 group"
 							>
 								<div className="relative h-48 overflow-hidden">
 									<Image
@@ -454,11 +505,11 @@ export default function LandingPage() {
 				id="location"
 				className="py-24 bg-brand-navy text-white relative overflow-hidden"
 			>
-				<div className="absolute top-0 right-0 w-1/2 h-full bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-brand-teal/10 to-transparent"></div>
+				<div className="absolute top-0 right-0 w-1/2 h-full bg-[radial-gradient(ellipse_at_center,var(--tw-gradient-stops))] from-brand-teal/10 to-transparent"></div>
 				<div className="container relative z-10 mx-auto px-6 lg:px-12 max-w-[1400px]">
 					<div className="grid lg:grid-cols-2 gap-20">
 						<div>
-							<Badge className="bg-brand-teal/20 text-brand-teal border-none mb-6 px-4 py-1">
+							<Badge className="bg-brand-teal/20 text-brand-teal border-none mb-6 px-4 py-4">
 								Location Strategy
 							</Badge>
 							<h2 className="text-4xl font-serif mb-6">
@@ -469,15 +520,16 @@ export default function LandingPage() {
 							</p>
 							<ul className="space-y-4">
 								{LOCATION_DATA.bullets.map((b, i) => (
+									// biome-ignore lint/suspicious/noArrayIndexKey: arrayIndexKey
 									<li key={i} className="flex items-center gap-3">
-										<MapPin className="w-5 h-5 text-brand-teal" />
+										<MapPin className="w-5 h-5 text-brand-teal shrink-0" />
 										<span className="text-white/90">{b}</span>
 									</li>
 								))}
 							</ul>
 						</div>
 						<div>
-							<Badge className="bg-brand-cyan/20 text-brand-cyan border-none mb-6 px-4 py-1">
+							<Badge className="bg-brand-cyan/20 text-brand-cyan border-none mb-6 px-4 py-4">
 								Sustainability
 							</Badge>
 							<h2 className="text-4xl font-serif mb-6">
@@ -500,7 +552,7 @@ export default function LandingPage() {
 					<p className="text-xl font-medium opacity-80 mb-12">
 						{OPENING_2029_DATA.description}
 					</p>
-					<div className="inline-block bg-brand-navy text-white px-8 py-4 rounded-full font-bold tracking-wide">
+					<div className="inline-block bg-brand-navy text-white px-8 py-5 rounded-xs min-[600px]:rounded-full font-bold tracking-wide">
 						{OPENING_2029_DATA.callout}
 					</div>
 				</div>
@@ -509,171 +561,12 @@ export default function LandingPage() {
 			{/* 11. Contact */}
 			<section id="contact" className="py-24 bg-slate-50">
 				<div className="container mx-auto px-6 lg:px-12 max-w-[1200px]">
-					<div className="grid lg:grid-cols-2 gap-16">
-						<div>
-							<h2 className="text-4xl md:text-5xl font-serif text-brand-navy mb-6">
-								{CONTACT_DATA.heading}
-							</h2>
-							<p className="text-lg text-slate-600 mb-10">
-								{CONTACT_DATA.description}
-							</p>
-							<div className="space-y-6">
-								<div>
-									<div className="text-sm font-semibold uppercase tracking-widest text-slate-400 mb-1">
-										Email
-									</div>
-									<a
-										href={`mailto:${CONTACT_DATA.email}`}
-										className="text-xl font-medium text-brand-navy hover:text-brand-cyan transition-colors"
-									>
-										{CONTACT_DATA.email}
-									</a>
-								</div>
-								<div>
-									<div className="text-sm font-semibold uppercase tracking-widest text-slate-400 mb-1">
-										Website
-									</div>
-									<a
-										href={`https://${CONTACT_DATA.website}`}
-										target="_blank"
-										rel="noreferrer"
-										className="text-xl font-medium text-brand-navy hover:text-brand-cyan transition-colors"
-									>
-										{CONTACT_DATA.website}
-									</a>
-								</div>
-								<div>
-									<div className="text-sm font-semibold uppercase tracking-widest text-slate-400 mb-1">
-										Office
-									</div>
-									<address className="text-lg text-slate-600 not-italic">
-										{CONTACT_DATA.address}
-									</address>
-								</div>
-							</div>
-						</div>
-
-						<Card className="p-8 shadow-xl border-slate-100 rounded-3xl">
-							<form className="space-y-6" onSubmit={(e) => e.preventDefault()}>
-								<div className="grid sm:grid-cols-2 gap-6">
-									<div className="space-y-2">
-										<label className="text-sm font-medium text-slate-700">
-											Name
-										</label>
-										<Input
-											placeholder="John Doe"
-											className="bg-slate-50 border-slate-200"
-										/>
-									</div>
-									<div className="space-y-2">
-										<label className="text-sm font-medium text-slate-700">
-											Organisation
-										</label>
-										<Input
-											placeholder="Company Ltd"
-											className="bg-slate-50 border-slate-200"
-										/>
-									</div>
-								</div>
-								<div className="grid sm:grid-cols-2 gap-6">
-									<div className="space-y-2">
-										<label className="text-sm font-medium text-slate-700">
-											Email
-										</label>
-										<Input
-											type="email"
-											placeholder="john@example.com"
-											className="bg-slate-50 border-slate-200"
-										/>
-									</div>
-									<div className="space-y-2">
-										<label className="text-sm font-medium text-slate-700">
-											Telephone
-										</label>
-										<Input
-											type="tel"
-											placeholder="+234..."
-											className="bg-slate-50 border-slate-200"
-										/>
-									</div>
-								</div>
-								<div className="space-y-2">
-									<label className="text-sm font-medium text-slate-700">
-										Enquiry type
-									</label>
-									<Select>
-										<SelectTrigger className="bg-slate-50 border-slate-200">
-											<SelectValue placeholder="Select an enquiry type" />
-										</SelectTrigger>
-										<SelectContent>
-											{CONTACT_DATA.formFields[0].options?.map((opt) => (
-												<SelectItem key={opt} value={opt}>
-													{opt}
-												</SelectItem>
-											))}
-										</SelectContent>
-									</Select>
-								</div>
-								<div className="space-y-2">
-									<label className="text-sm font-medium text-slate-700">
-										Message
-									</label>
-									<Textarea
-										placeholder="How can we partner?"
-										className="min-h-[120px] bg-slate-50 border-slate-200"
-									/>
-								</div>
-								<Button
-									size="lg"
-									className="w-full bg-brand-navy text-white hover:bg-brand-navy-light h-14 rounded-xl text-lg"
-								>
-									Send Message
-								</Button>
-							</form>
-						</Card>
-					</div>
+					<ContactSection />
 				</div>
 			</section>
 
 			{/* 12. Footer */}
-			<footer className="bg-brand-navy text-white/60 py-12 border-t border-white/5">
-				<div className="container mx-auto px-6 lg:px-12 max-w-[1400px]">
-					<div className="grid md:grid-cols-2 gap-8 mb-12">
-						<div>
-							<h4 className="text-white font-serif text-xl mb-2">
-								{FOOTER_DATA.brand}
-							</h4>
-							<p className="mb-4">{FOOTER_DATA.tagline}</p>
-							<p className="text-brand-cyan text-sm font-semibold uppercase tracking-wider">
-								{FOOTER_DATA.poweredBy}
-							</p>
-						</div>
-						<div className="md:text-right">
-							<address className="not-italic mb-4 text-sm">
-								{FOOTER_DATA.address}
-							</address>
-							<div className="space-x-4">
-								<a
-									href={`mailto:${FOOTER_DATA.email}`}
-									className="hover:text-white transition-colors"
-								>
-									{FOOTER_DATA.email}
-								</a>
-								<span>|</span>
-								<a
-									href={`https://${FOOTER_DATA.website}`}
-									className="hover:text-white transition-colors"
-								>
-									{FOOTER_DATA.website}
-								</a>
-							</div>
-						</div>
-					</div>
-					<div className="text-center text-sm border-t border-white/10 pt-8">
-						{FOOTER_DATA.copyright}
-					</div>
-				</div>
-			</footer>
+			<Footer />
 		</main>
 	);
 }
