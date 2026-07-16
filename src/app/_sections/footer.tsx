@@ -18,7 +18,7 @@ export default function Footer() {
 						<address className="not-italic mb-4 text-sm">
 							{FOOTER_DATA.address}
 						</address>
-						<div className="space-x-4">
+						<div className="space-x-4 flex flex-wrap">
 							<a
 								href={`mailto:${FOOTER_DATA.email}`}
 								className="hover:text-white transition-colors"

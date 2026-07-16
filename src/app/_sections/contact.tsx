@@ -112,7 +112,7 @@ export default function Contact() {
 				</div>
 			</div>
 
-			<Card className="p-8 shadow-xl border-slate-100 rounded-3xl relative overflow-hidden">
+			<Card className="p-6 sm:p-8 shadow-xl border-slate-100 rounded-3xl relative overflow-hidden">
 				{sent ? (
 					<div className="h-full flex flex-col items-center justify-center text-center space-y-4 animate-in fade-in zoom-in duration-500 min-h-[400px]">
 						<CheckCircle2 className="w-16 h-16 text-brand-cyan mb-4" />
@@ -167,7 +167,7 @@ export default function Contact() {
 									)}
 								</div>
 							</div>
-							<div className="grid sm:grid-cols-2 gap-6">
+							<div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
 								<div className="flex flex-col gap-1">
 									<label
 										htmlFor="email"

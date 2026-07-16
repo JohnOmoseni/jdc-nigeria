@@ -7,15 +7,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
-import {
-	Menu,
-	X,
-	ArrowRight,
-	CheckCircle2,
-	Zap,
-	Network,
-	MapPin,
-} from "lucide-react";
+import { Menu, X, ArrowRight, CheckCircle2, Zap, MapPin } from "lucide-react";
 
 import {
 	NAV_LINKS,
@@ -40,7 +32,7 @@ export default function LandingPage() {
 	const [isOpen, setIsOpen] = useState(false);
 
 	useEffect(() => {
-		const handleScroll = () => setIsScrolled(window.scrollY > 50);
+		const handleScroll = () => setIsScrolled(window.scrollY > 800);
 		window.addEventListener("scroll", handleScroll);
 		return () => window.removeEventListener("scroll", handleScroll);
 	}, []);
@@ -268,7 +260,7 @@ export default function LandingPage() {
 							<Card
 								// biome-ignore lint/suspicious/noArrayIndexKey: arrayIndexKey
 								key={idx}
-								className="bg-brand-navy-light border-white/5 p-8 hover:border-brand-cyan/30 transition-colors"
+								className="bg-brand-navy-light border-white/5 p-6 sm:p-8 hover:border-brand-cyan/30 transition-colors"
 							>
 								<h3 className="text-2xl font-serif text-white mb-4 flex items-center gap-3">
 									<span className="text-brand-cyan font-mono text-sm opacity-50">
@@ -281,8 +273,8 @@ export default function LandingPage() {
 						))}
 					</div>
 
-					<div className="flex flex-col md:flex-row items-center justify-between border-t border-white/10 pt-10">
-						<div className="grid grid-cols-[auto_1fr] gap-3 mb-8 md:mb-0">
+					<div className="flex flex-col md:flex-row items-center gap-4 justify-between border-t border-white/10 pt-10">
+						<div className="grid grid-cols-1 sm:grid-cols-[auto_1fr] gap-3 mb-8 md:mb-0">
 							<span className="text-white/50 text-sm uppercase tracking-widest mr-2">
 								What we value:
 							</span>
@@ -297,7 +289,7 @@ export default function LandingPage() {
 
 						<Button
 							size="lg"
-							className="w-full md:w-auto h-12"
+							className="w-full md:w-auto max-md:rounded-xs max-sm:h-auto max-sm:whitespace-pre-wrap max-md:px-6 max-md:py-4 h-12"
 							render={<Link href="#contact" />}
 						>
 							Bring the capability that completes the platform{" "}
@@ -397,7 +389,7 @@ export default function LandingPage() {
 					<p className="text-xl text-white/70 max-w-3xl mx-auto mb-16 leading-relaxed">
 						{POWER_RESILIENCE_DATA.description}
 					</p>
-					<div className="grid grid-cols-2 md:grid-cols-4 gap-8 mb-16">
+					<div className="grid grid-cols-1 min-[380px]:grid-cols-2 md:grid-cols-4 gap-8 mb-16">
 						{POWER_RESILIENCE_DATA.stats.map((stat, i) => (
 							<div
 								// biome-ignore lint/suspicious/noArrayIndexKey: arrayIndexKey
@@ -450,7 +442,7 @@ export default function LandingPage() {
 								src={IMAGES.campus}
 								alt="Campus Design"
 								fill
-								className="absolute inset-0 rounded-3xl"
+								className="absolute max-sm:object-cover inset-0 rounded-3xl"
 							/>
 							{/* </div> */}
 						</div>
@@ -486,7 +478,7 @@ export default function LandingPage() {
 									/>
 									<div className="absolute inset-0 bg-brand-navy/60 mix-blend-multiply group-hover:bg-brand-navy/40 transition-colors"></div>
 								</div>
-								<div className="p-8 bg-white">
+								<div className="p-6 sm:p-8 bg-white">
 									<h3 className="text-xl font-serif text-brand-navy mb-3 font-semibold">
 										{card.title}
 									</h3>
