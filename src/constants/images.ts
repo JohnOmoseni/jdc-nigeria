@@ -15,7 +15,7 @@ export const IMAGES = {
 		hpc: "https://images.unsplash.com/photo-1518770660439-4636190af475?q=80&w=800&auto=format&fit=crop",
 		dr: "https://images.unsplash.com/photo-1544197150-b99a580bb7a8?q=80&w=800&auto=format&fit=crop",
 		connectivity:
-			"https://images.unsplash.com/photo-1541884483733-4f9389fcc430?q=80&w=800&auto=format&fit=crop",
+			"https://images.unsplash.com/photo-1451187580459-43490279c0fa?q=80&w=800&auto=format&fit=crop",
 	},
 	placeholderLogo: "/images/jdc_pulse_placeholder.png",
 	logo: "/images/logo.png",

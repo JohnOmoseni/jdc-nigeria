@@ -185,7 +185,10 @@ export default function LandingPage() {
 								<div
 									// biome-ignore lint/suspicious/noArrayIndexKey: arrayIndexKey
 									key={i}
-									className="py-6 px-4 md:px-6 flex flex-col max-md:last:border-r border-white/5"
+									className={cn(
+										"py-6 px-4 md:px-6 flex flex-col max-md:last:border-0 border-white/5",
+										i === 1 && "border-0",
+									)}
 								>
 									<span className="font-serif text-2xl md:text-3xl text-brand-cyan mb-1 font-medium">
 										{stat.value}
@@ -238,7 +241,7 @@ export default function LandingPage() {
 				<div className="absolute inset-0 opacity-5 bg-[radial-gradient(circle_at_center,var(--tw-gradient-stops))] from-brand-cyan via-brand-navy to-brand-navy"></div>
 				<div className="container relative z-10 mx-auto px-6 lg:px-12 max-w-[1400px]">
 					<div className="max-w-3xl mb-16">
-						<Badge className="bg-brand-amber/10 text-brand-amber border-none mb-6 px-4 py-2.5 sm:py-4">
+						<Badge className="bg-brand-amber/10 text-brand-amber border-none mb-6 px-4 py-3 sm:py-4">
 							Partnerships
 						</Badge>
 						<h2 className="text-4xl md:text-5xl font-serif mb-6">
@@ -404,7 +407,7 @@ export default function LandingPage() {
 							</div>
 						))}
 					</div>
-					<p className="text-brand-amber font-sans font-medium italic">
+					<p className="text-brand-amber font-serif font-medium italic">
 						{POWER_RESILIENCE_DATA.footer}
 					</p>
 				</div>
@@ -431,7 +434,7 @@ export default function LandingPage() {
 								))}
 							</div>
 						</div>
-						<div className="order-1 lg:order-2 bg-slate-50 p-12 rounded-3xl border border-slate-100 relative h-[400px]">
+						<div className="order-1 lg:order-2 sm:bg-slate-50 p-12 rounded-3xl sm:border border-slate-100 relative h-[400px]">
 							{/* <Network
 								className="w-32 h-32 text-brand-navy/10"
 								strokeWidth={0.5}
@@ -441,7 +444,7 @@ export default function LandingPage() {
 								src={IMAGES.campus}
 								alt="Campus Design"
 								fill
-								className="absolute max-sm:object-cover inset-0 rounded-3xl"
+								className="absolute max-sm:h-auto! inset-0 rounded-3xl"
 							/>
 							{/* </div> */}
 						</div>
@@ -500,7 +503,7 @@ export default function LandingPage() {
 				<div className="container relative z-10 mx-auto px-6 lg:px-12 max-w-[1400px]">
 					<div className="grid lg:grid-cols-2 gap-20">
 						<div>
-							<Badge className="bg-brand-teal/20 text-brand-teal border-none mb-6 px-4 py-2.5 sm:py-4">
+							<Badge className="bg-brand-teal/20 text-brand-teal border-none mb-6 px-4 py-3 sm:py-4">
 								Location Strategy
 							</Badge>
 							<h2 className="text-4xl font-serif mb-6">
@@ -520,7 +523,7 @@ export default function LandingPage() {
 							</ul>
 						</div>
 						<div>
-							<Badge className="bg-brand-cyan/20 text-brand-cyan border-none mb-6 px-4 py-2.5 sm:py-4">
+							<Badge className="bg-brand-cyan/20 text-brand-cyan border-none mb-6 px-4 py-3 sm:py-4">
 								Sustainability
 							</Badge>
 							<h2 className="text-4xl font-serif mb-6">
