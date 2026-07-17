@@ -1,14 +1,11 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import Image from "next/image";
-import Link from "next/link";
 import { motion, AnimatePresence } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Menu, X, ArrowRight, CheckCircle2, Zap, MapPin } from "lucide-react";
-
 import {
 	NAV_LINKS,
 	HERO_DATA,
@@ -24,6 +21,8 @@ import {
 	IMAGES,
 } from "@/constants";
 import { cn } from "@/lib/utils";
+import Image from "next/image";
+import Link from "next/link";
 import ContactSection from "./_sections/contact";
 import Footer from "./_sections/footer";
 
@@ -239,7 +238,7 @@ export default function LandingPage() {
 				<div className="absolute inset-0 opacity-5 bg-[radial-gradient(circle_at_center,var(--tw-gradient-stops))] from-brand-cyan via-brand-navy to-brand-navy"></div>
 				<div className="container relative z-10 mx-auto px-6 lg:px-12 max-w-[1400px]">
 					<div className="max-w-3xl mb-16">
-						<Badge className="bg-brand-amber/10 text-brand-amber border-none mb-6 px-4 py-4">
+						<Badge className="bg-brand-amber/10 text-brand-amber border-none mb-6 px-4 py-2.5 sm:py-4">
 							Partnerships
 						</Badge>
 						<h2 className="text-4xl md:text-5xl font-serif mb-6">
@@ -278,7 +277,7 @@ export default function LandingPage() {
 							<span className="text-white/50 text-sm uppercase tracking-widest mr-2">
 								What we value:
 							</span>
-							<div className="flex flex-wrap flex-1 gap-x-4 gap-y-3">
+							<div className="flex flex-wrap flex-1 gap-x-2 sm:gap-x-4 gap-y-3">
 								{PARTNERSHIPS_DATA.values.map((val) => (
 									<span key={val} className="text-white/80 text-sm font-medium">
 										{val}
@@ -405,7 +404,7 @@ export default function LandingPage() {
 							</div>
 						))}
 					</div>
-					<p className="text-brand-amber font-medium italic">
+					<p className="text-brand-amber font-sans font-medium italic">
 						{POWER_RESILIENCE_DATA.footer}
 					</p>
 				</div>
@@ -501,7 +500,7 @@ export default function LandingPage() {
 				<div className="container relative z-10 mx-auto px-6 lg:px-12 max-w-[1400px]">
 					<div className="grid lg:grid-cols-2 gap-20">
 						<div>
-							<Badge className="bg-brand-teal/20 text-brand-teal border-none mb-6 px-4 py-4">
+							<Badge className="bg-brand-teal/20 text-brand-teal border-none mb-6 px-4 py-2.5 sm:py-4">
 								Location Strategy
 							</Badge>
 							<h2 className="text-4xl font-serif mb-6">
@@ -521,7 +520,7 @@ export default function LandingPage() {
 							</ul>
 						</div>
 						<div>
-							<Badge className="bg-brand-cyan/20 text-brand-cyan border-none mb-6 px-4 py-4">
+							<Badge className="bg-brand-cyan/20 text-brand-cyan border-none mb-6 px-4 py-2.5 sm:py-4">
 								Sustainability
 							</Badge>
 							<h2 className="text-4xl font-serif mb-6">
