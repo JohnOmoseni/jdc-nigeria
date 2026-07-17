@@ -30,6 +30,25 @@ export default function LandingPage() {
 	const [isScrolled, setIsScrolled] = useState(false);
 	const [isOpen, setIsOpen] = useState(false);
 
+	const toggleMenu = () => {
+		setIsOpen(!isOpen);
+	};
+
+	const closeMenu = () => {
+		setIsOpen(false);
+	};
+
+	useEffect(() => {
+		if (isOpen) {
+			document.body.style.overflow = "hidden";
+		} else {
+			document.body.style.overflow = "unset";
+		}
+		return () => {
+			document.body.style.overflow = "unset";
+		};
+	}, [isOpen]);
+
 	useEffect(() => {
 		const handleScroll = () => setIsScrolled(window.scrollY > 800);
 		window.addEventListener("scroll", handleScroll);
@@ -93,7 +112,7 @@ export default function LandingPage() {
 					<button
 						type="button"
 						className="lg:hidden text-white relative z-10"
-						onClick={() => setIsOpen(!isOpen)}
+						onClick={() => toggleMenu()}
 					>
 						{isOpen ? <X size={20} /> : <Menu size={20} />}
 					</button>
@@ -113,7 +132,7 @@ export default function LandingPage() {
 									<Link
 										key={link.label}
 										href={link.href}
-										onClick={() => setIsOpen(false)}
+										onClick={() => closeMenu()}
 										className="text-2xl font-serif text-white hover:text-brand-cyan"
 									>
 										{link.label}
@@ -121,12 +140,10 @@ export default function LandingPage() {
 								))}
 							</nav>
 							<Button
-								className="mt-auto text-xl py-6 bg-brand-cyan text-brand-navy font-semibold"
-								// asChild
+								className="mt-auto text-xl py-6 pb-8 bg-brand-cyan text-brand-navy font-semibold"
+								render={<Link href="#contact" onClick={() => closeMenu()} />}
 							>
-								<Link href="#contact" onClick={() => setIsOpen(false)}>
-									Discuss a Partnership
-								</Link>
+								Discuss a Partnership
 							</Button>
 						</motion.div>
 					)}
@@ -434,7 +451,7 @@ export default function LandingPage() {
 								))}
 							</div>
 						</div>
-						<div className="order-1 lg:order-2 sm:bg-slate-50 p-12 rounded-3xl sm:border border-slate-100 relative h-[400px]">
+						<div className="order-1 lg:order-2 sm:bg-slate-50 p-12 sm:rounded-3xl sm:border border-slate-100 relative h-[400px]">
 							{/* <Network
 								className="w-32 h-32 text-brand-navy/10"
 								strokeWidth={0.5}
@@ -444,7 +461,7 @@ export default function LandingPage() {
 								src={IMAGES.campus}
 								alt="Campus Design"
 								fill
-								className="absolute max-sm:h-auto! inset-0 rounded-3xl"
+								className="absolute max-sm:h-auto! inset-0 sm:rounded-3xl"
 							/>
 							{/* </div> */}
 						</div>

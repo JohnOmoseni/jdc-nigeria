@@ -2,7 +2,7 @@ export const IMAGES = {
 	hero: "https://images.unsplash.com/photo-1558494949-ef010cbdcc31?q=80&w=2034&auto=format&fit=crop", // data center at dusk / servers
 	process:
 		"https://images.unsplash.com/photo-1550751827-4bd374c3f58b?q=80&w=2070&auto=format&fit=crop", // tech background
-	campus: "/images/jdc.png", // actual JDC campus render
+	campus: "/images/jdc.png",
 	network:
 		"https://images.unsplash.com/photo-1600267185393-e158a98703de?q=80&w=2070&auto=format&fit=crop",
 	services: {
