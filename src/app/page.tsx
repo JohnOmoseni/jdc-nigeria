@@ -21,6 +21,7 @@ import {
 	IMAGES,
 } from "@/constants";
 import { cn } from "@/lib/utils";
+import { TwoPanelFeatureCard } from "@/components/TwoPanelFeatureCard";
 import Image from "next/image";
 import Link from "next/link";
 import ContactSection from "./_sections/contact";
@@ -524,7 +525,32 @@ export default function LandingPage() {
 			</section>
 
 			{/* 8. Why Southern Nigeria & 9. Sustainability */}
-			<section
+			<section id="location" className="bg-brand-navy relative overflow-hidden">
+				<div className="w-full mx-auto max-w-[1600px]">
+					<div className="grid lg:grid-cols-2">
+						<TwoPanelFeatureCard
+							eyebrow="Location Strategy"
+							heading={LOCATION_DATA.heading}
+							description={LOCATION_DATA.description}
+							features={LOCATION_DATA.features}
+							backgroundImage={IMAGES.hero}
+							gradientOverlay="from-brand-navy/95 via-brand-navy/80 to-brand-teal/20"
+							themeColor="teal"
+						/>
+						<TwoPanelFeatureCard
+							eyebrow="Sustainability"
+							heading={SUSTAINABILITY_DATA.heading}
+							description={SUSTAINABILITY_DATA.description}
+							features={SUSTAINABILITY_DATA.features}
+							backgroundImage={IMAGES.network}
+							gradientOverlay="from-brand-navy/95 via-brand-navy/80 to-brand-cyan/20"
+							themeColor="cyan"
+						/>
+					</div>
+				</div>
+			</section>
+
+			{/* <section
 				id="location"
 				className="py-24 bg-brand-navy text-white relative overflow-hidden"
 			>
@@ -564,7 +590,7 @@ export default function LandingPage() {
 						</div>
 					</div>
 				</div>
-			</section>
+			</section> */}
 
 			{/* 10. Opening 2029 */}
 			<section className="py-32 bg-brand-cyan text-brand-navy text-center">

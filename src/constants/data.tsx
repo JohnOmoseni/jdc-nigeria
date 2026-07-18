@@ -9,6 +9,8 @@ import {
 	RefreshCcw,
 	Handshake,
 	Lock,
+	MapPin,
+	Leaf,
 } from "lucide-react";
 import { IMAGES } from "./images";
 
@@ -164,11 +166,11 @@ export const LOCATION_DATA = {
 	heading: "Digital growth needs infrastructure beyond one market.",
 	description:
 		"Southern Nigeria brings together major population centres, financial institutions, industrial clusters, public-sector workloads and regional businesses that require resilient local infrastructure and meaningful location diversity.",
-	bullets: [
-		"A growing enterprise and industrial demand base",
-		"Location diversification beyond Lagos",
-		"Onshore data, resilience and business-continuity requirements",
-		"A platform for regional cloud, content and connectivity growth",
+	features: [
+		{ label: "Growing Demand Base", icon: Server },
+		{ label: "Location Diversity", icon: MapPin },
+		{ label: "Business Continuity", icon: Shield },
+		{ label: "Regional Growth", icon: Network },
 	],
 };
 
@@ -176,6 +178,12 @@ export const SUSTAINABILITY_DATA = {
 	heading: "Efficiency through infrastructure discipline.",
 	description:
 		"JDC's sustainability approach begins with disciplined design: efficient cooling pathways, modular activation, lifecycle-conscious engineering and capacity fitted out against real demand.",
+	features: [
+		{ label: "Efficient Cooling", icon: Zap },
+		{ label: "Modular Activation", icon: Server },
+		{ label: "Lifecycle Design", icon: Leaf },
+		{ label: "Demand-Fitted", icon: Cpu },
+	],
 };
 
 export const OPENING_2029_DATA = {
