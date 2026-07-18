@@ -5,7 +5,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
-import { Menu, X, ArrowRight, CheckCircle2, Zap, MapPin } from "lucide-react";
+import { Menu, X, ArrowRight, Zap, MapPin } from "lucide-react";
 import {
 	NAV_LINKS,
 	HERO_DATA,
@@ -76,7 +76,7 @@ export default function LandingPage() {
 							alt="JDC Nigeria Logo"
 							width={180}
 							height={100}
-							className="h-[100px]! hidden sm:block"
+							className="h-[100px]! hidden sm:block opacity-90"
 							priority
 						/>
 						<Image
@@ -140,7 +140,7 @@ export default function LandingPage() {
 								))}
 							</nav>
 							<Button
-								className="mt-auto text-xl py-6 pb-8 bg-brand-cyan text-brand-navy font-semibold"
+								className="mt-auto text-xl py-6 mb-4 bg-brand-cyan text-brand-navy font-semibold"
 								render={<Link href="#contact" onClick={() => closeMenu()} />}
 							>
 								Discuss a Partnership
@@ -197,7 +197,7 @@ export default function LandingPage() {
 				{/* Hero Stats */}
 				<div className="md:absolute bottom-0 left-0 w-full bg-brand-navy-light/95 border-t border-white/10 backdrop-blur-md">
 					<div className="container mx-auto px-6 lg:px-12 max-w-[1400px]">
-						<div className="grid grid-cols-2 md:grid-cols-4 divide-x divide-white/5">
+						<div className="grid grid-cols-1 md:grid-cols-3 divide-y md:divide-y-0 md:divide-x divide-white/5">
 							{HERO_DATA.stats.map((stat, i) => (
 								<div
 									// biome-ignore lint/suspicious/noArrayIndexKey: arrayIndexKey
@@ -267,11 +267,6 @@ export default function LandingPage() {
 						<p className="text-xl text-white/70 leading-relaxed mb-6">
 							{PARTNERSHIPS_DATA.description}
 						</p>
-						<div className="p-6 border border-brand-cyan/20 bg-brand-cyan/5 rounded-xl">
-							<p className="text-brand-cyan font-medium leading-relaxed">
-								{PARTNERSHIPS_DATA.callout}
-							</p>
-						</div>
 					</div>
 
 					<div className="grid md:grid-cols-2 gap-6 mb-16">
@@ -320,39 +315,61 @@ export default function LandingPage() {
 
 			{/* 4. The Campus */}
 			<section id="campus" className="py-24 bg-slate-50">
-				<div className="container mx-auto px-6 lg:px-12 max-w-[1400px]">
-					<div className="grid lg:grid-cols-2 gap-16 items-center">
-						<div className="relative aspect-square md:aspect-video lg:aspect-square rounded-3xl overflow-hidden shadow-xl">
+				<div className="container mx-auto px-6 lg:px-12 max-w-[1200px]">
+					<div className="flex flex-col lg:flex-row bg-white rounded-3xl overflow-hidden shadow-lg border border-slate-100 mb-12">
+						<div className="p-10 lg:p-14 lg:w-[45%] flex flex-col justify-center relative z-20 bg-white">
+							<span className="text-brand-cyan font-bold text-xs uppercase tracking-widest mb-3">
+								The Campus
+							</span>
+							<h2 className="text-3xl lg:text-[40px] leading-tight font-serif text-brand-navy mb-6 font-semibold">
+								{CAMPUS_DATA.heading}
+							</h2>
+							<div className="space-y-4 text-slate-600 mb-8 leading-relaxed text-[15px] sm:text-base">
+								{CAMPUS_DATA.description.map((p, i) => (
+									// biome-ignore lint/suspicious/noArrayIndexKey: arrayIndexKey
+									<p key={i}>{p}</p>
+								))}
+							</div>
+
+							<Link
+								href="#contact"
+								className="inline-flex ml-1 items-center text-cyan-600  font-semibold transition-colors group text-sm w-max"
+							>
+								Explore the Campus
+								<ArrowRight className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform" />
+							</Link>
+						</div>
+
+						<div className="relative lg:w-[55%] min-h-[300px] lg:min-h-[450px]">
 							<Image
 								src={IMAGES.network}
 								alt="Campus Design"
 								fill
 								className="object-cover"
 							/>
+							{/* Gradient fade on desktop */}
+							<div className="absolute inset-y-0 left-[-1px] w-48 bg-linear-to-r from-white via-white/80 to-transparent hidden lg:block z-10 pointer-events-none"></div>
+							{/* Gradient fade on mobile */}
+							<div className="absolute inset-x-0 top-[-1px] h-32 bg-linear-to-b from-white via-white/80 to-transparent lg:hidden z-10 pointer-events-none"></div>
 						</div>
-						<div>
-							<h2 className="text-4xl lg:text-5xl font-serif text-brand-navy mb-8">
-								{CAMPUS_DATA.heading}
-							</h2>
-							<div className="space-y-6 text-lg text-slate-600 mb-10 leading-relaxed">
-								{CAMPUS_DATA.description.map((p, i) => (
-									// biome-ignore lint/suspicious/noArrayIndexKey: arrayIndexKey
-									<p key={i}>{p}</p>
-								))}
-							</div>
-							<ul className="space-y-4">
-								{CAMPUS_DATA.bullets.map((bullet, i) => (
-									<li
-										// biome-ignore lint/suspicious/noArrayIndexKey: arrayIndexKey
-										key={i}
-										className="flex items-start gap-4 text-slate-700 font-medium"
-									>
-										<CheckCircle2 className="w-6 h-6 text-brand-teal shrink-0" />
-										<span>{bullet}</span>
-									</li>
-								))}
-							</ul>
-						</div>
+					</div>
+
+					{/* Campus Bullets Grid */}
+					<div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+						{CAMPUS_DATA.bullets.map((bullet, i) => (
+							<Card
+								// biome-ignore lint/suspicious/noArrayIndexKey: arrayIndexKey
+								key={i}
+								className="p-5 flex items-start gap-4 border-slate-200 shadow-sm rounded-xl bg-white"
+							>
+								<div className="w-10 h-10 shrink-0 bg-brand-cyan/10 rounded-lg flex items-center justify-center text-brand-navy">
+									<bullet.icon className="w-5 h-5" />
+								</div>
+								<span className="text-sm font-semibold text-slate-800 leading-snug mt-1 sm:mt-2">
+									{bullet.label}
+								</span>
+							</Card>
+						))}
 					</div>
 				</div>
 			</section>
@@ -408,7 +425,7 @@ export default function LandingPage() {
 					<p className="text-xl text-white/70 max-w-3xl mx-auto mb-16 leading-relaxed">
 						{POWER_RESILIENCE_DATA.description}
 					</p>
-					<div className="grid grid-cols-1 min-[380px]:grid-cols-2 md:grid-cols-4 gap-8 mb-16">
+					<div className="grid grid-cols-1 min-[380px]:grid-cols-2 md:grid-cols-3 gap-8 mb-16">
 						{POWER_RESILIENCE_DATA.stats.map((stat, i) => (
 							<div
 								// biome-ignore lint/suspicious/noArrayIndexKey: arrayIndexKey
@@ -486,25 +503,20 @@ export default function LandingPage() {
 							<Card
 								// biome-ignore lint/suspicious/noArrayIndexKey: arrayIndexKey
 								key={i}
-								className="overflow-hidden p-0 border-none shadow-sm hover:shadow-xl transition-shadow duration-300 group"
+								className="overflow-hidden p-8 border-none shadow-sm hover:shadow-xl transition-shadow duration-300 group bg-white"
 							>
-								<div className="relative h-48 overflow-hidden">
-									<Image
-										src={card.image}
-										alt={card.title}
-										fill
-										className="object-cover transition-transform duration-700 group-hover:scale-105"
+								<div className="w-14 h-14 bg-brand-cyan/10 rounded-xl flex items-center justify-center mb-6 text-brand-cyan group-hover:bg-brand-cyan group-hover:text-brand-navy transition-colors">
+									<card.icon
+										className="w-7 h-7 group-hover:text-white"
+										strokeWidth={1.5}
 									/>
-									<div className="absolute inset-0 bg-brand-navy/60 mix-blend-multiply group-hover:bg-brand-navy/40 transition-colors"></div>
 								</div>
-								<div className="p-6 sm:p-8 bg-white">
-									<h3 className="text-xl font-serif text-brand-navy mb-3 font-semibold">
-										{card.title}
-									</h3>
-									<p className="text-slate-600 text-sm leading-relaxed">
-										{card.desc}
-									</p>
-								</div>
+								<h3 className="text-xl font-serif text-brand-navy mb-3 font-semibold">
+									{card.title}
+								</h3>
+								<p className="text-slate-600 text-sm leading-relaxed">
+									{card.desc}
+								</p>
 							</Card>
 						))}
 					</div>

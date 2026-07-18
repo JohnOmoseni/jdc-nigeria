@@ -8,6 +8,7 @@ import {
 	Link,
 	RefreshCcw,
 	Handshake,
+	Lock,
 } from "lucide-react";
 import { IMAGES } from "./images";
 
@@ -25,20 +26,19 @@ export const HERO_DATA = {
 	headlineStart: "Built for Scale. Designed for AI. ",
 	headlineHighlight: "Powered by Partnership.",
 	supportingCopy:
-		"JDC Nigeria Data Centres is developing a 55 MW, Tier III-targeted digital-infrastructure campus in Southern Nigeria. The platform is being built with specialist operating, technology, connectivity and commercial partners to serve cloud, enterprise, carrier and high-density computing requirements.",
+		"JDC Nigeria Data Centres is developing a 55 MW, Tier III-targeted digital-infrastructure campus in Southern Nigeria. The platform is being developed to bring together specialist operating, technology, connectivity and commercial partners serving cloud, enterprise, carrier and high-density computing requirements.",
 	closingLine: "Designed for Nigeria. Built for the world.",
 	stats: [
 		{ value: "55 MW", label: "Facility Load" },
-		{ value: "60 MW", label: "Installed Generation" },
-		{ value: "Tier III", label: "Targeted Design" },
-		{ value: "2029", label: "Opening" },
+		{ value: "Dedicated", label: "Modular N+1 On-Site Generation" },
+		{ value: "Designed", label: "For Continuous Mission-Critical Operation" },
 	],
 };
 
 export const POWER_TO_PACKET_DATA = {
 	heading: "One platform. Every critical layer.",
 	description:
-		"JDC brings the energy, building, connectivity, operations and commercial disciplines of a modern data centre into one coordinated development programme. Wellsmart Energy Limited provides the dedicated power and resilience platform. Selected specialist partners will lead data-centre design, certification, connectivity, operations and customer development.",
+		"JDC brings the energy, facility, connectivity, operations and commercial disciplines of a modern data centre into one coordinated development programme. Wellsmart Energy Limited is developing the dedicated energy and resilience platform. Specialist partners will be engaged to lead data-centre design, certification, connectivity, operations and customer development.",
 	sequence: [
 		{ label: "Power", icon: Zap },
 		{ label: "Facility", icon: Server },
@@ -51,9 +51,7 @@ export const POWER_TO_PACKET_DATA = {
 export const PARTNERSHIPS_DATA = {
 	heading: "A platform designed for the right partners.",
 	description:
-		"JDC is assembling the specialist capability required to design, deliver, operate and commercialise a major data-centre platform in Southern Nigeria. Participation is reserved for partners that bring measurable long-term value.",
-	callout:
-		"Up to 25% of JDC (Nigeria) SPV Ltd is reserved collectively for selected specialist operating, technical, connectivity and commercial partners. Participation will reflect measurable contribution — not name recognition alone.",
+		"JDC is engaging specialist operating, technical, connectivity and commercial partners capable of contributing measurable long-term value to the platform. Any long-term participation will be structured around defined delivery, operating and commercial contributions.",
 	cards: [
 		{
 			title: "Operating and certification partners",
@@ -84,27 +82,29 @@ export const PARTNERSHIPS_DATA = {
 export const CAMPUS_DATA = {
 	heading: "55 MW of facility scale. Modular from the ground up.",
 	description: [
-		"JDC is being developed as one fully coordinated campus platform. The common power, connectivity, security, roads, drainage and facility infrastructure will be designed for the full programme, while data halls and white space are activated in commercially sensible modules aligned with customer commitments.",
+		"JDC is being developed as one fully coordinated campus platform, planned around the full 55 MW facility requirement. Common energy, connectivity, security, roads, drainage and facility infrastructure will support the wider programme, while data halls and white space are activated in commercially sensible modules aligned with customer commitments.",
 		"Final saleable IT capacity will be established through operator-led design, reflecting cooling architecture, rack density, resilience and the requirements of cloud, enterprise and high-density workloads.",
 	],
 	bullets: [
-		"Modular data halls and private suites",
-		"High-density and AI/HPC-ready design pathways",
-		"Scalable electrical and cooling distribution",
-		"Integrated fire, security and monitoring systems",
-		"Customer activation aligned with contracted demand",
+		{ label: "Modular data halls and private suites", icon: Server },
+		{ label: "High-density and AI/HPC-ready design pathways", icon: Cpu },
+		{ label: "Scalable electrical and cooling distribution", icon: Zap },
+		{ label: "Integrated fire, security and monitoring systems", icon: Shield },
+		{
+			label: "Customer activation aligned with contracted demand",
+			icon: Handshake,
+		},
 	],
 };
 
 export const POWER_RESILIENCE_DATA = {
 	heading: "Dedicated power. Designed for continuity.",
 	description:
-		"The development is designed around 60 MW of installed generation delivered by Wellsmart Energy Limited. A modular N+1 architecture, integrated ride-through systems, black-start capability and emergency resilience will be engineered around the operating requirements of the data-centre campus.",
+		"The campus is being developed around a dedicated modular on-site generation and resilience platform led by Wellsmart Energy Limited. Final generation capacity, equipment configuration and mission-critical resilience architecture will be established through operator-led design, detailed engineering and site-rated OEM guarantees.",
 	stats: [
-		{ value: "60 MW", label: "Installed Generation" },
-		{ value: "12", label: "Modular Units" },
-		{ value: "N+1", label: "Design Basis" },
-		{ value: "55 MW", label: "Facility Requirement" },
+		{ value: "55 MW", label: "Facility Load" },
+		{ value: "Dedicated", label: "Modular N+1 On-Site Generation" },
+		{ value: "Designed", label: "For Continuous Mission-Critical Operation" },
 	],
 	footer: "Powered by Wellsmart Energy Limited.",
 };
@@ -112,7 +112,7 @@ export const POWER_RESILIENCE_DATA = {
 export const CONNECTIVITY_DATA = {
 	heading: "Carrier-neutral by design.",
 	description:
-		"JDC is being designed for two physically diverse fibre entrances, carrier-neutral meet-me rooms, multiple operator access, cloud and content interconnection, and flexible cross-connect services. Final routes and service commitments will be contracted as part of the development programme.",
+		"JDC is being designed for two physically diverse fibre entrances, carrier-neutral meet-me rooms, multiple-carrier access, cloud and content interconnection, and flexible cross-connect services. Final routes and service commitments will be contracted as part of the development programme.",
 	bullets: [
 		"Physically diverse fibre-route design",
 		"Carrier-neutral meet-me rooms",
@@ -125,37 +125,37 @@ export const CONNECTIVITY_DATA = {
 export const SERVICES_DATA = {
 	heading: "Capacity for the workloads shaping the next decade.",
 	description:
-		"JDC will support customers from single enterprise deployments to dedicated halls and high-density environments. Commercial structures will be developed around long-term, USD-denominated capacity and service agreements for qualifying customers.",
+		"JDC will support customers from single enterprise deployments to dedicated halls and high-density environments. Commercial structures will be developed around long-term capacity and service agreements for qualifying customers.",
 	cards: [
 		{
 			title: "Wholesale Colocation",
 			desc: "Scalable capacity for cloud, content, carrier and large enterprise customers requiring contiguous space and dependable infrastructure.",
-			image: IMAGES.services.colocation,
+			icon: Server,
 		},
 		{
 			title: "Enterprise Private Suites",
 			desc: "Secure, dedicated environments for regulated institutions, industrial companies, government and critical business systems.",
-			image: IMAGES.services.enterprise,
+			icon: Lock,
 		},
 		{
 			title: "Hyperscale and Cloud",
 			desc: "Modular campus capacity designed to support cloud platforms, content providers and large-scale digital services.",
-			image: IMAGES.services.hyperscale,
+			icon: Cloud,
 		},
 		{
 			title: "AI and High-Performance Computing",
 			desc: "Power and cooling pathways designed for high-density deployments, subject to final operator-led engineering.",
-			image: IMAGES.services.hpc,
+			icon: Cpu,
 		},
 		{
 			title: "Disaster Recovery and Business Continuity",
 			desc: "Location-diverse infrastructure for organisations strengthening resilience beyond their primary operating environments.",
-			image: IMAGES.services.dr,
+			icon: RefreshCcw,
 		},
 		{
 			title: "Managed Connectivity and Cross-Connects",
 			desc: "Carrier access, interconnection, cloud on-ramps, cross-connects and related operational support.",
-			image: IMAGES.services.connectivity,
+			icon: Link,
 		},
 	],
 };
@@ -175,15 +175,14 @@ export const LOCATION_DATA = {
 export const SUSTAINABILITY_DATA = {
 	heading: "Efficiency through infrastructure discipline.",
 	description:
-		"JDC's sustainability approach begins with design: dedicated power, efficient cooling pathways, modular activation, lifecycle-conscious engineering and reduced dependence on inefficient emergency generation. Capacity will be fitted out against real demand rather than activated wastefully ahead of customers.",
+		"JDC's sustainability approach begins with disciplined design: efficient cooling pathways, modular activation, lifecycle-conscious engineering and capacity fitted out against real demand.",
 };
 
 export const OPENING_2029_DATA = {
 	heading: "Development underway. Built for long-term operation.",
 	description:
-		"JDC is advancing its site, power, design, partner, connectivity and financing workstreams towards an opening in 2029. The programme is being structured for phased customer activation within a fully coordinated campus platform.",
-	callout:
-		"Opening 2029 — Partnership and early capacity discussions are now open.",
+		"JDC is advancing its site, energy, design, partner and connectivity workstreams towards an opening in 2029. The programme is being structured for modular customer activation within a fully coordinated campus platform.",
+	callout: "OPENING 2029 • PARTNERSHIP AND EARLY CAPACITY DISCUSSIONS ARE OPEN",
 };
 
 export const CONTACT_DATA = {
@@ -200,7 +199,7 @@ export const CONTACT_DATA = {
 				"Technology or EPC",
 				"Connectivity",
 				"Commercial or Customer",
-				"Financing or Investment",
+				"Strategic Partnership",
 				"Capacity Enquiry",
 				"General",
 			],

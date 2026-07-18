@@ -4,7 +4,7 @@ export const IMAGES = {
 		"https://images.unsplash.com/photo-1550751827-4bd374c3f58b?q=80&w=2070&auto=format&fit=crop", // tech background
 	campus: "/images/jdc.png",
 	network:
-		"https://images.unsplash.com/photo-1600267185393-e158a98703de?q=80&w=2070&auto=format&fit=crop",
+		"https://images.unsplash.com/photo-1558494949-ef010cbdcc31?q=80&w=2070&auto=format&fit=crop",
 	services: {
 		colocation:
 			"https://images.unsplash.com/photo-1558494949-ef010cbdcc31?q=80&w=800&auto=format&fit=crop",
@@ -19,6 +19,6 @@ export const IMAGES = {
 	},
 	placeholderLogo: "/images/jdc_pulse_placeholder.png",
 	logo: "/images/logo.png",
-	headerLogo: "/images/full_logo_header.png",
-	footerLogo: "/images/full_logo_footer.png",
+	headerLogo: "/images/full_logo_white.png",
+	footerLogo: "/images/full_logo_white.png",
 };
