@@ -1,9 +1,6 @@
 import { NextResponse } from "next/server";
-import { Resend } from "resend";
 import { contactSchema } from "@/lib/schemas/contact";
-import ContactEmail from "@/emails/ContactEmail";
-
-const resend = new Resend(process.env.RESEND_API_KEY);
+import { ContactEmailHtml } from "@/emails/ContactEmail";
 
 export async function POST(request: Request) {
 	try {
@@ -19,25 +16,34 @@ export async function POST(request: Request) {
 
 		const { name, email, phone, organisation, interest, message } = result.data;
 
-		const { data, error } = await resend.emails.send({
-			from: "JDC Nigeria <onboarding@resend.dev>",
-			to: ["info@jdcnigeria.com"],
-			subject: `New Contact Inquiry: ${interest} - ${name}`,
-			react: ContactEmail({
-				name,
-				email,
-				phone,
-				organisation,
-				interest,
-				message,
+		const response = await fetch("https://api.resend.com/emails", {
+			method: "POST",
+			headers: {
+				"Content-Type": "application/json",
+				Authorization: `Bearer ${process.env.RESEND_API_KEY}`,
+			},
+			body: JSON.stringify({
+				from: "JDC Nigeria <onboarding@resend.dev>",
+				to: ["info@jdcnigeria.com"],
+				subject: `New Contact Inquiry: ${interest} - ${name}`,
+				html: ContactEmailHtml({
+					name,
+					email,
+					phone,
+					organisation,
+					interest,
+					message,
+				}),
+				reply_to: email,
 			}),
-			replyTo: email,
 		});
 
-		if (error) {
-			return NextResponse.json({ error: error.message }, { status: 500 });
+		if (!response.ok) {
+			const errorData = await response.json();
+			return NextResponse.json({ error: errorData.message || "Failed to send email" }, { status: response.status });
 		}
 
+		const data = await response.json();
 		return NextResponse.json({ success: true, data });
 	} catch (error) {
 		return NextResponse.json(

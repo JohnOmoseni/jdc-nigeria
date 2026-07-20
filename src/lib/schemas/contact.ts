@@ -1,11 +1,7 @@
 import { z } from "zod";
-import { isValidPhoneNumber } from "react-phone-number-input";
 
 export const contactSchema = z.object({
-	name: z
-		.string()
-		.min(1, "Name is required")
-		.max(120, "Name is too long"),
+	name: z.string().min(1, "Name is required").max(120, "Name is too long"),
 	organisation: z.string().optional(),
 	email: z
 		.string()
@@ -17,7 +13,7 @@ export const contactSchema = z.object({
 		.optional()
 		.refine((val) => {
 			if (!val) return true;
-			return isValidPhoneNumber(val);
+			return /^\+?[0-9\s\-()]{7,20}$/.test(val);
 		}, "Phone must be valid international format, e.g. +2348012345678"),
 	interest: z.string().min(1, "Area of interest is required"),
 	message: z
