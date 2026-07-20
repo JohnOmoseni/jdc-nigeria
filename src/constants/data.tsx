@@ -12,7 +12,6 @@ import {
 	MapPin,
 	Leaf,
 } from "lucide-react";
-import { IMAGES } from "./images";
 
 export const NAV_LINKS = [
 	{ label: "Campus", href: "#campus" },
