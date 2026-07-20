@@ -23,7 +23,7 @@ export async function POST(request: Request) {
 				Authorization: `Bearer ${process.env.RESEND_API_KEY}`,
 			},
 			body: JSON.stringify({
-				from: "JDC Nigeria <onboarding@resend.dev>",
+				from: "JDC Nigeria <info@jdcnigeria.com>",
 				to: ["info@jdcnigeria.com"],
 				subject: `New Contact Inquiry: ${interest} - ${name}`,
 				html: ContactEmailHtml({
@@ -40,7 +40,10 @@ export async function POST(request: Request) {
 
 		if (!response.ok) {
 			const errorData = await response.json();
-			return NextResponse.json({ error: errorData.message || "Failed to send email" }, { status: response.status });
+			return NextResponse.json(
+				{ error: errorData.message || "Failed to send email" },
+				{ status: response.status },
+			);
 		}
 
 		const data = await response.json();
