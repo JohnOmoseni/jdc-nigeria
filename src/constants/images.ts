@@ -1,10 +1,16 @@
 export const IMAGES = {
-	hero: "https://images.unsplash.com/photo-1558494949-ef010cbdcc31?q=80&w=2034&auto=format&fit=crop", // data center at dusk / servers
+	hero: "/images/full-building.png",
+	// hero: "https://images.unsplash.com/photo-1558494949-ef010cbdcc31?q=80&w=2034&auto=format&fit=crop",
 	process:
-		"https://images.unsplash.com/photo-1550751827-4bd374c3f58b?q=80&w=2070&auto=format&fit=crop", // tech background
-	campus: "/images/jdc.png",
+		"https://images.unsplash.com/photo-1550751827-4bd374c3f58b?q=80&w=2070&auto=format&fit=crop",
+	campus: "/images/server-racks.jpg",
+	// 		"https://images.unsplash.com/photo-1550751827-4bd374c3f58b?q=80&w=2070&auto=format&fit=crop", // tech background
+	// campus: "/images/jdc.png",
 	network:
 		"https://images.unsplash.com/photo-1558494949-ef010cbdcc31?q=80&w=2070&auto=format&fit=crop",
+	location: "/images/noc-room.jpg",
+	sustainability: "/images/electrical-room.jpg",
+	connectivity: "/images/meet-me-room.jpg",
 	services: {
 		colocation:
 			"https://images.unsplash.com/photo-1558494949-ef010cbdcc31?q=80&w=800&auto=format&fit=crop",

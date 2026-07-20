@@ -214,20 +214,20 @@ export const CONTACT_DATA = {
 		},
 		{ name: "message", label: "Message", type: "textarea" },
 	],
-	email: "info@jdcnigeria.net",
-	website: "www.jdcnigeria.net",
+	email: "info@jdcnigeria.com",
+	website: "www.jdcnigeria.com",
 	address:
 		"27B Prince Adelowo Adedeji, Off Admiralty Way, Lekki Phase 1, Lagos, Nigeria",
 };
 
 export const FOOTER_DATA = {
-	brand: "JDC Nigeria Data Centres — A public brand of JDC (Nigeria) SPV Ltd",
+	brand: "JDC Nigeria Data Centres — A public brand of JDC (Nigeria) SPV",
 	tagline:
 		"55 MW digital-infrastructure platform in Southern Nigeria • Opening 2029",
 	poweredBy: "Powered by Wellsmart Energy Limited",
 	address:
 		"27B Prince Adelowo Adedeji, Off Admiralty Way, Lekki Phase 1, Lagos, Nigeria",
-	email: "info@jdcnigeria.net",
-	website: "www.jdcnigeria.net",
-	copyright: "© 2026 JDC (Nigeria) SPV Ltd. All rights reserved.",
+	email: "info@jdcnigeria.com",
+	website: "www.jdcnigeria.com",
+	copyright: "© 2026 JDC (Nigeria) SPV. All rights reserved.",
 };

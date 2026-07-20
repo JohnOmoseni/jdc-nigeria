@@ -5,7 +5,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
-import { Menu, X, ArrowRight, Zap, MapPin } from "lucide-react";
+import { Menu, X, ArrowRight, Zap } from "lucide-react";
 import {
 	NAV_LINKS,
 	HERO_DATA,
@@ -61,7 +61,7 @@ export default function LandingPage() {
 			{/* 1. Navigation */}
 			<header
 				className={cn(
-					"fixed top-0 left-0 w-full z-50 transition-all duration-300",
+					"fixed top-0 left-0 w-full z-50 transition-all md:py-5 duration-300",
 					isScrolled
 						? "bg-brand-navy/90 grayscale backdrop-blur-lg shadow-lg py-4"
 						: "glass-nav py-4",
@@ -161,7 +161,7 @@ export default function LandingPage() {
 						className="object-cover opacity-40 mix-blend-overlay"
 						priority
 					/>
-					<div className="absolute inset-0 bg-linear-to-r from-brand-navy via-brand-navy/40 to-brand-navy/30"></div>
+					{/* <div className="absolute inset-0 bg-linear-to-r from-brand-navy via-brand-navy/40 to-brand-navy/30"></div> */}
 					<div className="absolute inset-0 bg-linear-to-t from-brand-navy via-transparent to-transparent"></div>
 				</div>
 
@@ -343,7 +343,7 @@ export default function LandingPage() {
 
 						<div className="relative lg:w-[55%] min-h-[300px] lg:min-h-[450px]">
 							<Image
-								src={IMAGES.network}
+								src={IMAGES.campus}
 								alt="Campus Design"
 								fill
 								className="object-cover"
@@ -476,10 +476,10 @@ export default function LandingPage() {
 							/> */}
 							{/* <div className="relative aspect-square md:aspect-video lg:aspect-square rounded-3xl overflow-hidden shadow-xl"> */}
 							<Image
-								src={IMAGES.campus}
-								alt="Campus Design"
+								src={IMAGES.connectivity}
+								alt="Connectivity Design"
 								fill
-								className="absolute max-sm:h-auto! inset-0 sm:rounded-3xl"
+								className="absolute max-sm:h-auto! inset-0 sm:rounded-3xl object-cover"
 							/>
 							{/* </div> */}
 						</div>
@@ -533,7 +533,7 @@ export default function LandingPage() {
 							heading={LOCATION_DATA.heading}
 							description={LOCATION_DATA.description}
 							features={LOCATION_DATA.features}
-							backgroundImage={IMAGES.hero}
+							backgroundImage={IMAGES.location}
 							gradientOverlay="from-brand-navy/95 via-brand-navy/80 to-brand-teal/20"
 							themeColor="teal"
 						/>
@@ -542,7 +542,7 @@ export default function LandingPage() {
 							heading={SUSTAINABILITY_DATA.heading}
 							description={SUSTAINABILITY_DATA.description}
 							features={SUSTAINABILITY_DATA.features}
-							backgroundImage={IMAGES.network}
+							backgroundImage={IMAGES.sustainability}
 							gradientOverlay="from-brand-navy/95 via-brand-navy/80 to-brand-cyan/20"
 							themeColor="cyan"
 						/>
