@@ -51,7 +51,8 @@ export default function Contact() {
 
 	const onSubmit = (data: ContactSchemaType) => {
 		submitContact.mutate(data, {
-			onSuccess: () => {
+			onSuccess: (data) => {
+				console.log("Contact form submitted successfully", data);
 				setSent(true);
 			},
 			onError: (error) => {
